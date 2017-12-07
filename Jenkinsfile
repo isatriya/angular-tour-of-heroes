@@ -9,7 +9,7 @@ pipeline {
                 checkout scm 
             }
         }
-        stage ('Check Environment') {
+        stage ('Check environment') {
             steps {
                 sh """
                     node --version
@@ -18,15 +18,20 @@ pipeline {
                 """
             }
         }
-        stage('Build') { 
+        stage('Install') { 
             steps {
                 sh 'npm install' 
             }
         }
-        stage('Test') { 
+        stage('Check linting') { 
             steps {
-                sh 'npm run test' 
+                sh 'ng lint' 
             }
         }
+        // stage('Test') { 
+        //     steps {
+        //         sh 'npm run test' 
+        //     }
+        // }
     }
 }
