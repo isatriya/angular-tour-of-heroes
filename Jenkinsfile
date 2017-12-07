@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Check linting') { 
             steps {
-                sh 'ng lint' 
+                sh 'npm run lint' 
             }
         }
         // stage('Test') { 
