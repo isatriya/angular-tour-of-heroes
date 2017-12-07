@@ -9,6 +9,15 @@ pipeline {
                 checkout scm 
             }
         }
+        stage ('Check Environment') {
+            steps {
+                sh """
+                    node --version
+                    npm --version
+                    git --version
+                """
+            }
+        }
         stage('Build') { 
             steps {
                 sh 'npm install' 
