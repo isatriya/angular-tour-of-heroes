@@ -23,10 +23,26 @@ pipeline {
                 sh 'npm run lint' 
             }
         }
-        // stage('Test') { 
-        //     steps {
-        //         sh 'npm run test' 
-        //     }
-        // }
+        stage('Unit test') { 
+            steps {
+                def testOut = sh(script: """
+                Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
+                export DISPLAY=:99.0
+                ps -ea
+                npm test
+                """, returnStdout: true).trim()
+                // writeFile(file: 'coverage.txt', text: testOut)
+                // if (!isProd(env.BRANCH_NAME)){
+                // publishHTML (target: [
+                //         allowMissing: false,
+                //         alwaysLinkToLastBuild: false,
+                //         keepAll: true,
+                //         reportDir: "coverage",
+                //         reportFiles: "index.html",
+                //         reportName: "Code coverage report"
+                //     ])
+                // }
+            }
+        }
     }
 }
