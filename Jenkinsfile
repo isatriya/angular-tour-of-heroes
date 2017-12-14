@@ -32,15 +32,15 @@ pipeline {
                     ps -ea
                     npm test
                     """, returnStdout: true).trim()
-                    // writeFile(file: 'coverage.txt', text: testOut)
-                    // publishHTML (target: [
-                    //     allowMissing: false,
-                    //     alwaysLinkToLastBuild: false,
-                    //     keepAll: true,
-                    //     reportDir: "coverage",
-                    //     reportFiles: "index.html",
-                    //     reportName: "Code coverage report"
-                    // ])
+                    writeFile(file: 'coverage.txt', text: testOut)
+                    publishHTML (target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "coverage",
+                        reportFiles: "index.html",
+                        reportName: "Code coverage report"
+                    ])
                 }
             }
         }
