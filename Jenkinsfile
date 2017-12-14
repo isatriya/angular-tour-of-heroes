@@ -46,15 +46,16 @@ pipeline {
         }
         stage('e2e test') {
             steps {
-                sh """
-                    (npm start &)
-                    while ! nc -z 127.0.0.1; do sleep 5; done
-                """
+                // sh """
+                //     Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
+                //     export DISPLAY=:99.0
+                //     npm run webdriver:update
+                //     npm run protractor
+                // """
                 sh """
                     Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
                     export DISPLAY=:99.0
-                    npm run webdriver:update
-                    npm run protractor
+                    npm run e2e
                 """
             }
         }
