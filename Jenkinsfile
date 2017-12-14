@@ -50,8 +50,6 @@ pipeline {
                     (npm start &)
                     while ! nc -z 127.0.0.1 4200; do sleep 5; done
                 """
-            }
-            steps {
                 sh """
                     Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
                     export DISPLAY=:99.0
