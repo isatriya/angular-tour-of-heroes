@@ -48,7 +48,7 @@ pipeline {
             steps {
                 sh """
                     (npm start &)
-                    while ! nc -z 127.0.0.1 4200; do sleep 5; done
+                    while ! nc -z 127.0.0.1; do sleep 5; done
                 """
                 sh """
                     Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
