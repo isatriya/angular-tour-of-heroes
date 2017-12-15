@@ -57,7 +57,11 @@ pipeline {
                 //     export DISPLAY=:99.0
                 //     npm run e2e
                 // """
-                sh 'npm run e2e'
+                // sh 'npm run e2e'
+                sh """
+                    npm run webdriver:update
+                    npm run protractor
+                """
             }
         }
     }
