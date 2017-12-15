@@ -52,11 +52,12 @@ pipeline {
                 //     npm run webdriver:update
                 //     npm run protractor
                 // """
-                sh """
-                    Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
-                    export DISPLAY=:99.0
-                    npm run e2e
-                """
+                // sh """
+                //     Xvfb :99 -screen 0 1024x768x16 &> xvfb.log &
+                //     export DISPLAY=:99.0
+                //     npm run e2e
+                // """
+                sh 'npm run e2e'
             }
         }
     }
