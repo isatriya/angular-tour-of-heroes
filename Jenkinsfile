@@ -59,8 +59,7 @@ pipeline {
                 // """
                 // sh 'npm run e2e'
                 sh """
-                    npm run webdriver:update
-                    npm run protractor
+                    npm run e2e
                 """
             }
         }
