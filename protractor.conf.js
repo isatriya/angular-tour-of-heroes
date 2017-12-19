@@ -12,7 +12,7 @@ exports.config = {
     'browserName': 'chrome',
     // Comment out this below script to run e2e test with normal browser instead of headless.
     chromeOptions: {
-      args: [ "--headless", "--disable-gpu", "--window-size=800x600" ]
+      args: [ "no-sandbox", "headless", "disable-gpu", "window-size=800x600" ]
     }
   },
   directConnect: true,
